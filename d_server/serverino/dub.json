@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"Sergei Giniatulin"
+	],
+	"copyright": "Copyright © 2024, Sergei Giniatulin",
+	"dependencies": {
+		"serverino": "~>0.7.11"
+	},
+	"description": "Serverino websocket echo test",
+	"license": "proprietary",
+	"name": "server"
+}

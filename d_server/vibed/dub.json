@@ -1,0 +1,21 @@
+{
+	"authors": [
+		"Sergei Giniatulin"
+	],
+	"copyright": "Copyright © 2024, Sergei Giniatulin",
+	"dependencies": {
+		"vibe-http": "~>1.1.0",
+		"vibe-stream:tls": "~>1.1.0"
+	},
+	"subConfigurations": {
+        "vibe-stream:tls": "notls"
+    },
+	"versions": [
+		"VibeManualMemoryManagement",
+		"VibeHighEventPriority",
+		"VibeDisableCommandLineParsing"
+	],
+	"description": "Vibed WebSocket Echo testing",
+	"license": "proprietary",
+	"name": "server"
+}

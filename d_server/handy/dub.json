@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"Sergei Giniatulin"
+	],
+	"copyright": "Copyright © 2024, Sergei Giniatulin",
+	"dependencies": {
+		"handy-httpd": "~>8.4.2"
+	},
+	"description": "Handy websocket echo test",
+	"license": "proprietary",
+	"name": "server"
+}
