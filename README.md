@@ -16,6 +16,14 @@ rate:  9268.835330306563  round trips per second
 
 rate:  9285.041683937668  round trips per second
 
+## Go results
+### Melody
+rate:  9845.522229868968  round trips per second
+
+rate:  9938.15268126995  round trips per second
+
+rate:  9955.625844117649  round trips per second
+
 ## Python results
 ### Aiohttp:
 rate:  6246.744898402702  round trips per second

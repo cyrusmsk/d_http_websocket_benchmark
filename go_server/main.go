@@ -20,8 +20,9 @@ func main() {
   clients = make(map[net.Addr]*melody.Session, MAX_CLIENTS)
 
   m := melody.New()
+  m.Upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 
-  http.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+  http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
     fmt.Println("HandleFunc")
     m.HandleRequest(w, r)
   })
@@ -36,7 +37,6 @@ func main() {
   })
 
   m.HandleMessage(func(sender *melody.Session, data []byte) {
-    fmt.Println("HandleMessage")
     m.BroadcastFilter(data, func(receiver *melody.Session) bool {
       return sender != receiver
     })
