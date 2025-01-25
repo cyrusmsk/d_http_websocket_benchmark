@@ -7,7 +7,7 @@
 		"arsd-official:cgi": "~>11.5.2"
 	},
     "subConfigurations": {
-        "arsd-official:cgi": "embedded_httpd_threads",
+        "arsd-official:cgi": "embedded_httpd_threads","cgi_no_fork",
     },
 	"description": "CGI websocket echo testing",
 	"license": "MIT",
