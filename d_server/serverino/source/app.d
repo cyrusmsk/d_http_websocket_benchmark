@@ -1,9 +1,7 @@
 module app;
 
-import std;
+import std.stdio: writeln;
 import serverino;
-
-shared WebSocket[] connected;
 
 @onWebSocketUpgrade bool onUpgrade(Request req)
 {
@@ -12,15 +10,12 @@ shared WebSocket[] connected;
 
 @route!"/"@endpoint void echo(Request r, WebSocket ws)
 {
-    connected ~= cast(shared)ws;
     try
     {
         while (true)
         {
             WebSocketMessage msg = ws.receiveMessage();
-            foreach (con; connected)
-                if (con != ws)
-                    (cast(WebSocket) con).send(msg.asString);
+            ws.send(msg.asString);
         }
     }
     catch (Exception e)

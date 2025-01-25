@@ -11,7 +11,7 @@ async def client1():
             await websocket.send('allo')
             while True:
                 response = await websocket.recv()
-                print(f"Client1 recved: {response}")
+                #print(f"Client1 recved: {response}")
                 round_trips += 1
                 if(round_trips % 65536 == 0):
                     end = time.time_ns()
@@ -19,9 +19,9 @@ async def client1():
                     print("rate: ",round_trips/duration," round trips per second")
                 await websocket.send('allo')
     except websockets.exceptions.ConnectionClosed:
-        print("Соединение закрыто")
+        print("Client1 connection is closed")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print(f"Client1 Error: {e}")
 
 async def client2():
     try:
@@ -29,12 +29,12 @@ async def client2():
             print("Client2 connected")
             while True:
                 response = await websocket.recv()
-                print(f"Client2 recved: {response}")
+                #print(f"Client2 recved: {response}")
                 await websocket.send('allo!')
     except websockets.exceptions.ConnectionClosed:
-        print("Client2 Соединение закрыто")
+        print("Client2 connection is closed")
     except Exception as e:
-        print(f"Client2 Ошибка: {e}")
+        print(f"Client2 Error: {e}")
 
 async def main():
     task1 = asyncio.create_task(client1())

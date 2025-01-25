@@ -4,7 +4,7 @@
 	],
 	"copyright": "Copyright © 2024, Sergei Giniatulin",
 	"dependencies": {
-		"handy-httpd": "~>8.4.2"
+		"handy-httpd": "~>8.5.0"
 	},
 	"description": "Handy websocket echo test",
 	"license": "proprietary",
