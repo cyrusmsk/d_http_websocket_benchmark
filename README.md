@@ -4,7 +4,7 @@ This benchmark provides some comparison of `D` websocket implementations.
 
 The comparison itself is pretty simple.
 It is based on the [post of Daniel Lemire](https://lemire.me/blog/2023/11/28/a-simple-websocket-benchmark-in-python/).
-Initial post's code is based on comparison of `Python` with `Node.js`.
+Initial post's code is making a comparison of `Python` with `Node.js`.
 
 This repo extended `Python` examples and added `D` implementations.
 
