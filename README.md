@@ -64,10 +64,14 @@ rate:  4386.621046771637  round trips per second
 
 ## Possible improvements
 [ ] Add `C++` frameworks
+
 [ ] Add `Rust` frameworks
+
 [ ] Add more sophisticated tests
 
 ## References
 [C++ framework](https://github.com/oatpp/benchmark-websocket)
+
 [Rust framework](https://c410-f3r.github.io/thoughts/the-fastest-websocket-implementation/)
+
 [More advanced test](https://matttomasetti.medium.com/websocket-performance-comparison-10dc89367055)
