@@ -22,7 +22,7 @@ func main() {
   m := melody.New()
   m.Upgrader.CheckOrigin = func(r *http.Request) bool { return true }
 
-  http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+  http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
     fmt.Println("HandleFunc")
     m.HandleRequest(w, r)
   })

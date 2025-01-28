@@ -4,7 +4,7 @@ import time
 
 async def client1():
     try:
-        async with websockets.connect('ws://localhost:8080/ws') as websocket:
+        async with websockets.connect('ws://localhost:8080/') as websocket:
             print("Client1 connected")
             round_trips = 0
             start = time.time_ns()
@@ -25,7 +25,7 @@ async def client1():
 
 async def client2():
     try:
-        async with websockets.connect('ws://localhost:8080/ws') as websocket:
+        async with websockets.connect('ws://localhost:8080/') as websocket:
             print("Client2 connected")
             while True:
                 response = await websocket.recv()

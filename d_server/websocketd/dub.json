@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"Sergei Giniatulin"
+	],
+	"copyright": "Copyright © 2025, Sergei Giniatulin",
+	"dependencies": {
+		"websocketd": "~>0.1.0"
+	},
+	"description": "Websocketd server echo test",
+	"license": "proprietary",
+	"name": "server"
+}
