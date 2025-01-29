@@ -3,51 +3,55 @@ module app;
 import std;
 import serverino;
 
-@onWebSocketUpgrade bool onUpgrade(Request req)
-{
-    return true;
-}
+enum ushort PORT = 5555;
 
-@route!"/"@endpoint void echo(Request r, WebSocket ws)
-{
-    auto ws_id = randomUUID().toString();
+@onWebSocketUpgrade onUpgrade(Request request) => true;
 
-    ws.socket.blocking = false;
+// Handle the WebSocket connection
+@endpoint void echo(Request r, WebSocket ws) {
 
-    auto sck = new UdpSocket();
-    // set broadcast flag
-    sck.setOption(SocketOptionLevel.SOCKET, SocketOption.BROADCAST, true);
-	sck.setOption(SocketOptionLevel.SOCKET, SocketOption.REUSEADDR, true);
+    auto myid = randomUUID().toString();
+    auto address = new InternetAddress("127.255.255.255", PORT);
 
-	auto bc = new InternetAddress("255.255.255.255",12345);
-    sck.bind(bc);
-    sck.blocking = false;
+    auto socket = new UdpSocket();
+    socket.setOption(SocketOptionLevel.SOCKET, SocketOption.BROADCAST, true);
+    socket.setOption(SocketOptionLevel.SOCKET, SocketOption.REUSEADDR, true);
+    socket.setOption(SocketOptionLevel.SOCKET, cast(SocketOption) SO_REUSEPORT, true);
+    socket.bind(address);
 
-    try
-    {
-        while (true)
+    SocketSet ss = new SocketSet();
+
+    // Read messages from the client
+    while (true) {
+
+        ss.reset();
+        ss.add(socket);
+        ss.add(ws.socket);
+
+        if (Socket.select(ss, null, null) < 0) break;
+
+        // Broadcast message to all clients if websocket receives a message
+        if (ss.isSet(ws.socket))
+            if (WebSocketMessage msg = ws.receiveMessage())
+                socket.sendTo(myid ~ msg.asString, address);
+
+        // Read broadcast messages
+        if (ss.isSet(socket))
         {
-            if (WebSocketMessage msg = ws.receiveMessage()) {
-                sck.sendTo(ws_id ~ ":" ~ msg.asString, bc);
-            }
+            ubyte[1464] buf;
+            auto len = socket.receive(buf);
 
-            ubyte[4096] buf;
-            auto len = sck.receive(buf);
-            if (len > 0) {
-			    auto chrs = cast(char[])buf[0..len];
-                log("Buf:",chrs);
-                if (!chrs.startsWith(ws_id)) {
-                    string txt = chrs.to!string;
-                    txt = txt.split(":")[1];
-                    log("Msg:",txt);
-                    ws.send(txt);
-			    }
+            if (len > 0 && len > myid.length)
+            {
+                auto sender = cast(char[])buf[0..myid.length];
+                auto msg = cast(char[])buf[myid.length..len];
+
+                if (sender != myid)
+                {
+                    ws.send(cast(string)msg);
+                }
             }
         }
-    }
-    catch (Exception e)
-    {
-        writeln(e);
     }
 }
 

@@ -11,7 +11,7 @@ async def client1():
             await websocket.send('allo')
             while True:
                 response = await websocket.recv()
-                #print(f"Client1 recved: {response}")
+                print(f"Client1 recved: {response}")
                 round_trips += 1
                 if(round_trips % 65536 == 0):
                     end = time.time_ns()
@@ -29,7 +29,7 @@ async def client2():
             print("Client2 connected")
             while True:
                 response = await websocket.recv()
-                #print(f"Client2 recved: {response}")
+                print(f"Client2 recved: {response}")
                 await websocket.send('allo!')
     except websockets.exceptions.ConnectionClosed:
         print("Client2 connection is closed")
