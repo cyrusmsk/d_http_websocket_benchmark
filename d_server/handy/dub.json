@@ -7,6 +7,6 @@
 		"handy-httpd": "~>8.5.0"
 	},
 	"description": "Handy websocket echo test",
-	"license": "proprietary",
+	"license": "MIT",
 	"name": "server"
 }

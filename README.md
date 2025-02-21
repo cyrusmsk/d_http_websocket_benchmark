@@ -32,6 +32,13 @@ rate:  10525.96920235299  round trips per second
 
 rate:  10526.674798897024  round trips per second
 
+### Lighttp
+rate:  11337.294189775123  round trips per second
+
+rate:  11319.217530762508  round trips per second
+
+rate:  11355.444090113046  round trips per second
+
 ## Go results
 ### Melody
 rate:  9845.522229868968  round trips per second

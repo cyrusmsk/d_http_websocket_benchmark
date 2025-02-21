@@ -16,6 +16,6 @@
 		"VibeDisableCommandLineParsing"
 	],
 	"description": "Vibed WebSocket Echo testing",
-	"license": "proprietary",
+	"license": "MIT",
 	"name": "server"
 }

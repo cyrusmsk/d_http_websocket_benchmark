@@ -4,9 +4,9 @@
 	],
 	"copyright": "Copyright © 2025, Sergei Giniatulin",
 	"dependencies": {
-		"websocketd": "~>0.1.0"
+		"lighttp": "~>0.5.4"
 	},
-	"description": "Websocketd server echo test",
+	"description": "Lighttp websocket echo test",
 	"license": "MIT",
 	"name": "server"
 }
