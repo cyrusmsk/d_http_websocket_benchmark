@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"Sergei Giniatulin"
+	],
+	"copyright": "Copyright © 2025, Sergei Giniatulin",
+	"dependencies": {
+		"serverino": "~>0.7.16"
+	},
+	"description": "Simple D client for WebSocket",
+	"license": "proprietary",
+	"name": "d_client"
+}

@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/d_client
+d_client.so
+d_client.dylib
+d_client.dll
+d_client.a
+d_client.lib
+d_client-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst

@@ -21,6 +21,7 @@ class EchoServer {
         }
 
         override void onReceive(ubyte[] data) {
+            writeln(data);
             foreach(connection; connections.byPair)
                 if (connection.key != this.id)
                     connection.value.send(cast(string)data);
