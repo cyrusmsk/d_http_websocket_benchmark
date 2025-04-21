@@ -83,6 +83,8 @@ rate:  4386.621046771637  round trips per second
 
 [ ] Add more sophisticated tests
 
+[x] Faster client
+
 ## References
 [C++ framework](https://github.com/oatpp/benchmark-websocket)
 

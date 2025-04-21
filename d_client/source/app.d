@@ -127,6 +127,7 @@ void main()
 {
     auto cl2 = task!client2;
     cl2.executeInNewThread();
+    Thread.sleep(dur!"msecs"(100));
     client1();
 
     writeln("Both tasks completed");

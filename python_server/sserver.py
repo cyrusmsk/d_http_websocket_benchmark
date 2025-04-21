@@ -15,3 +15,7 @@ async def echo(request, ws):
                     await client.send(message)
     finally:
         connected.remove(ws)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8080)
