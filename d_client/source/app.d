@@ -1,4 +1,5 @@
 import std;
+import std.file : write;
 import core.thread;
 
 import std.datetime.stopwatch : StopWatch, AutoStart;
@@ -7,6 +8,11 @@ import serverino;
 
 void client1()
 {
+    string filePath = "../output/d_data.json";
+    auto jsonText = readText(filePath);
+    auto jsonData = parseJSON(jsonText);
+
+    float[] results;
     auto handshake = "GET / HTTP/1.1\r\nHost: localhost:8080\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\nSec-WebSocket-Version: 13\r\n\r\n";
 
     auto sck = new TcpSocket();
@@ -58,10 +64,14 @@ void client1()
         if (round_trips % 65536 == 0)
         {
             auto duration = sw.peek();
-            writeln("rate: ", round_trips / (duration.total!"seconds"), " round trips per second");
+            //writeln("rate: ", round_trips / (duration.total!"seconds"), " round trips per second");
+            results ~= round_trips / duration.total!"seconds";
         }
         if (round_trips > 65536 * 3)
         {
+            JSONValue jj = ["py-aihttp": results];
+            jsonData["d_data"].array ~= jj;
+            write(filePath, jsonData.toPrettyString());
             ws.sendClose();
             return;
         }
