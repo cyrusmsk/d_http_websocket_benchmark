@@ -3,18 +3,18 @@ import std.stdio;
 import std.parallelism;
 import std.uuid;
 
+shared WebSocketConnection[] connected;
+
 class Echo: WebSocketMessageHandler {
-    shared WebSocketConnection[] connected;
     override void onConnectionEstablished(WebSocketConnection conn) {
-        connected ~= cast(shared)conn;
+        connected ~= cast(shared) conn;
     }
 
     override void onTextMessage(WebSocketTextMessage msg) {
-        auto send_task = task(&async_send, connected, msg.conn.id, msg.payload);
-        send_task.executeInNewThread();
+        sync_send(connected, msg.conn.id, msg.payload);
     }
 
-    void async_send(shared WebSocketConnection[] connect, UUID id, string text) {
+    void sync_send(shared WebSocketConnection[] connect, UUID id, string text) {
         foreach(con; connect)
             if (con.id != id)
                 (cast(WebSocketConnection) con).sendTextMessage(text);

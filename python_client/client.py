@@ -24,7 +24,7 @@ async def client1():
                     #print("rate: ",round_trips/duration," round trips per second")
                     results.append(round_trips//duration)
                 if(round_trips > 65536*3):
-                    json_data['py_data'].append({'d-lighttp': results})
+                    json_data['py_data'].append({'d-handy': results})
                     with open(file_path, 'w') as file:
                         json.dump(json_data, file, indent=2)
                     print("Client1 finished")

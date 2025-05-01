@@ -8,7 +8,7 @@ import serverino;
 
 void client1()
 {
-    string filePath = "../output/d_data.json";
+    string filePath = "../output/data.json";
     auto jsonText = readText(filePath);
     auto jsonData = parseJSON(jsonText);
 
@@ -69,7 +69,7 @@ void client1()
         }
         if (round_trips > 65536 * 3)
         {
-            JSONValue jj = ["py-aihttp": results];
+            JSONValue jj = ["d-handy": results];
             jsonData["d_data"].array ~= jj;
             write(filePath, jsonData.toPrettyString());
             ws.sendClose();
