@@ -1,33 +1,11 @@
 import matplotlib.pyplot as plt
 import json
 
-data = {
-    "py_data": [
-        {
-            "py-aiohttp": [
-                6431.0,
-                6445.0,
-                6448.0
-            ]
-        },
-        {
-            "py-blacksheep": [
-                4909.0,
-                4913.0,
-                4915.0
-            ]
-        }
-    ]
-}
-
 # Extract the data for plotting
-labels = []
-values = []
+clients = {} 
 
-for item in data["py_data"]:
-    for key, val in item.items():
-        labels.append(key)
-        values.append(val)
+with open("data.json", "r") as f:
+    js = loads(f)
 
 # Create the histogram
 plt.figure(figsize=(10, 6))
