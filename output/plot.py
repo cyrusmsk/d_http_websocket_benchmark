@@ -25,7 +25,7 @@ for cl in clients:
     plt.figure(figsize=(8, 5))
     plt.bar(categories, mean_values, color='skyblue', width=0.6)
 
-    x_pos = np.arange(len(categories))
+    x_pos = list(range(len(categories)))
     plt.scatter(x_pos, min_values, color='red', s=10, label='Min', zorder=3)
     plt.scatter(x_pos, max_values, color='green', s=10, label='Max', zorder=3)
 

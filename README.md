@@ -10,6 +10,13 @@ This repo extended `Python` examples and added `D` implementations.
 
 To have a better picture also popular websocket framework from `Go` was added.
 
+## With Python client
+![plot](https://raw.githubusercontent.com/cyrusmsk/d_http_websocket_benchmark/refs/heads/main/output/plot_py_data.png)
+
+## With D client
+![plot](https://raw.githubusercontent.com/cyrusmsk/d_http_websocket_benchmark/refs/heads/main/output/plot_d_data.png)
+
+
 ## Possible improvements
 [ ] Add `C++` frameworks
 
@@ -18,6 +25,8 @@ To have a better picture also popular websocket framework from `Go` was added.
 [ ] Add more sophisticated tests
 
 [x] Faster client
+
+[x] Add plotting
 
 ## References
 [C++ framework](https://github.com/oatpp/benchmark-websocket)
